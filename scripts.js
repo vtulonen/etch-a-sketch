@@ -1,6 +1,6 @@
 window.onload = addGrid();
 
-
+/*
 function clearGrid(){
     const rmvnode = document.getElementById('fc');
         while (rmvnode.firstChild){
@@ -18,17 +18,24 @@ function addNewGrid(boxCount){
     }
     container.appendChild(content);
 }
+*/
+function randomColor(){
+    let x = Math.floor(Math.random() * 256);
+    let y = Math.floor(Math.random() * 256);
+    let z = Math.floor(Math.random() * 256);
+    let rndmColor = "rgb(" + x +',' + y + ',' + z +")";
+    return rndmColor;
+}
 
 function changeDivColorHover(){
     const boxes = document.querySelectorAll('.box');
     boxes.forEach((box) =>{
         box.addEventListener('mouseover', () =>{
-            box.style.background = 'black';
+            box.style.background = randomColor();
             
         })
     })
 }
-
 
 function addGrid(){
     let container = document.querySelector(".container");
@@ -50,20 +57,13 @@ function addGrid(){
 
 
     // change div color on mouseover
-    const boxes = document.querySelectorAll('.box');
-    boxes.forEach((box) =>{
-        box.addEventListener('mouseover', () =>{
-            box.style.background = 'black';
-            
-        })
-    })
+    changeDivColorHover();
 
     // add a button on top of the page
     let button = document.createElement('button');
     button.textContent = 'New Grid';
     container.insertBefore(button, container.firstChild);
     
-    // reset box div colors on click of button
     
     let btn = document.querySelector('button');
     
@@ -75,10 +75,14 @@ function addGrid(){
         boxCount = newSize * newSize;
         // newSize = set new box size
         let newWnH = 640 / newSize;
-        console.log(boxCount);
+        console.log(newSize);
         
-        clearGrid();
-
+        if(newSize != null){
+            const rmvnode = document.getElementById('fc');
+            while (rmvnode.firstChild){
+                rmvnode.removeChild(rmvnode.firstChild);
+            }
+        }
         //create new grid with newSize/boxcount
         for (let j=0; j<boxCount; j++){
             let box = document.createElement('div');
@@ -90,10 +94,7 @@ function addGrid(){
             content.appendChild(box);
         }
         
-        boxes.forEach((box) =>{
-            
-        })
-
+    
     container.appendChild(content);
     
     changeDivColorHover();
