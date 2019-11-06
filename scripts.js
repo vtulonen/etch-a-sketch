@@ -29,10 +29,27 @@ function randomColor(){
 
 function changeDivColorHover(){
     const boxes = document.querySelectorAll('.box');
+
+    
+
+    let i = 1;
+    
+    let downFlag = 1;
     boxes.forEach((box) =>{
+      
         box.addEventListener('mouseover', () =>{
-            box.style.background = randomColor();
-            
+            if(downFlag == 1) {
+                i = i - 0.1;
+                i.toFixed(1);
+                if (i < 0) downFlag = 0; i = 0;
+            }
+            if (downFlag == 0) {
+                i = i + 0.1;
+                i.toFixed(1);
+                if (i > 1) downFlag = 1;
+            }
+                box.style.background = randomColor();
+            box.style.opacity = i;
         })
     })
 }
@@ -48,7 +65,7 @@ function addGrid(){
             let box = document.createElement('div');
             box.classList.add('box');
             box.setAttribute('id', 'box');
-            //box.textContent = 1;
+            //box.textContent = j;
             content.appendChild(box);
         }
         
