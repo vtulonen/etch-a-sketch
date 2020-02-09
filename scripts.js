@@ -1,24 +1,5 @@
 window.onload = addGrid();
 
-/*
-function clearGrid(){
-    const rmvnode = document.getElementById('fc');
-        while (rmvnode.firstChild){
-            rmvnode.removeChild(rmvnode.firstChild);
-        }
-}
-
-function addNewGrid(boxCount){
-    for (let j=0; j<boxCount; j++){
-        let box = document.createElement('div');
-        box.classList.add('box');
-        box.setAttribute('id', 'box');
-        //box.textContent = 1;
-        content.appendChild(box);
-    }
-    container.appendChild(content);
-}
-*/
 function randomColor(){
     let x = Math.floor(Math.random() * 256);
     let y = Math.floor(Math.random() * 256);
@@ -48,7 +29,7 @@ function changeDivColorHover(){
                 i.toFixed(1);
                 if (i > 1) downFlag = 1;
             }
-                box.style.background = randomColor();
+                box.style.background = 'white';
             box.style.opacity = i;
         })
     })
@@ -65,7 +46,6 @@ function addGrid(){
             let box = document.createElement('div');
             box.classList.add('box');
             box.setAttribute('id', 'box');
-            //box.textContent = j;
             content.appendChild(box);
         }
         
@@ -80,7 +60,7 @@ function addGrid(){
     let button = document.createElement('button');
     button.textContent = 'New Grid';
     container.insertBefore(button, container.firstChild);
-    
+    button.setAttribute("style", "margin: 10px 50%;");
     
     let btn = document.querySelector('button');
     
@@ -107,7 +87,6 @@ function addGrid(){
             box.setAttribute('id', 'box');
             box.style.width = newWnH +'px'; // new size
             box.style.height = newWnH+'px'; // new height
-            //box.textContent = 1;
             content.appendChild(box);
         }
         
@@ -119,20 +98,5 @@ function addGrid(){
         
     
     })
-
-  
-
-
-/* if CSS needs to be added with DOM methods
-let style = document.createElement('style');
-style.innerHTML = `
-
- .css rules {
-    something: something
- }
-`;
-
-document.head.appendChild(style);
-*/
 }
 
